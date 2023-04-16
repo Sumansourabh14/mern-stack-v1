@@ -10,6 +10,7 @@ const port = process.env.PORT || 6001;
 // Routes
 const homeRoute = require("./routes/homeRoute");
 const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 const errorHandler = require("./middlewares/errorMiddleware");
 
@@ -19,7 +20,8 @@ const app = express();
 app.use(express.json());
 
 app.use("/", homeRoute);
-app.use("/api", authRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/user", userRoutes);
 app.use(errorHandler);
 
 app.listen(port, () => {
