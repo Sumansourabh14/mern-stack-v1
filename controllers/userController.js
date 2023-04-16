@@ -37,7 +37,7 @@ const deleteUser = asyncHandler(async (req, res, next) => {
   const user = await UserModel.findById(id);
 
   if (!user) {
-    res.status(400);
+    res.status(404);
     return next(new Error("User not found"));
   }
 
