@@ -7,6 +7,11 @@ const getUsers = async (req, res) => {
   res.json({ success: true, users, totalUsers: users.length });
 };
 
+const getCurrentUser = asyncHandler(async (req, res) => {
+  // get the user info (req.user) from the isAuthenticated (validate token) middleware
+  res.json(req.user);
+});
+
 const updateUser = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
 
@@ -50,4 +55,4 @@ const deleteUser = asyncHandler(async (req, res, next) => {
   });
 });
 
-module.exports = { getUsers, deleteUser, updateUser };
+module.exports = { getUsers, getCurrentUser, updateUser, deleteUser };
